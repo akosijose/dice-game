@@ -14,6 +14,9 @@ document.getElementById("score--1").textContent = "0";
 document.getElementById("current--0").textContent = "0";
 document.getElementById("current--1").textContent = "0";
 
+document.getElementById("name--0").textContent = "Player 1";
+document.getElementById("name--1").textContent = "Player 2";
+
 btnRoll.addEventListener("click", () => {
   // 1. we need a random number
   let dice = Math.floor(Math.random() * 6) + 1;
@@ -39,6 +42,7 @@ btnRoll.addEventListener("click", () => {
 document.querySelector(".btn--hold").addEventListener("click", () => {
   // add current score to GLOBAL score
   scores[activePlayer] += roundScore;
+  // console.log(scores["activePlayer"]);
 
   // update the UI
   document.querySelector(`#score--${activePlayer}`).textContent =
@@ -56,11 +60,9 @@ document.querySelector(".btn--hold").addEventListener("click", () => {
       .querySelector(`.player--${activePlayer}`)
       .classList.remove("player--active");
   } else {
+    // next player
     nextPlayer();
   }
-
-  // next player
-  nextPlayer();
 });
 
 function nextPlayer() {
